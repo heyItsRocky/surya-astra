@@ -2,7 +2,43 @@
 
 **Project**: Solar Flare Intelligence Dashboard — ISRO BAH 2026 (PS15)
 **Status**: 60% built | Needs: error handling, tests, SEO, deployment
-**Stack**: Next.js 16, React 19, Three.js/R3F, Tailwind v4, Recharts, Anime.js
+**Stack**: Next.js 16, React 19, Three.js/R3F, Tailwind v4, Recharts v2, Anime.js
+
+---
+
+## Tech Stack Assessment
+
+### Keep As-Is (Optimal)
+| Library | Version | Why |
+|---------|---------|-----|
+| **Next.js** | 16.x (App Router) | Latest, SSR/SSG for SEO, zero-config Vercel deploy |
+| **React** | 19.x | Latest concurrent features, R3F compatible |
+| **React Three Fiber** | r155+ | R3F v9 on React 19, first-class support |
+| **Drei** | latest | R3F utility library, barrel exports work fine |
+| **Three.js** | r155+ | Used directly for custom GLSL shaders — no Abii or Troika needed |
+| **Tailwind CSS** | v4.x | Latest, @tailwindcss/postcss plugin |
+| **Recharts** | 2.x | Dashboard charts, responsive, lightweight |
+| **Anime.js** | 4.x (ESM) | IntroSequence animations, v4 is latest |
+| **Lenis** | latest | Smooth scrolling |
+
+### Add (Missing)
+| Library | Why |
+|---------|-----|
+| **vitest** + `@testing-library/react` + `@testing-library/jest-dom` | Zero test files currently |
+| **Error boundary component** | Wrap 3D + dashboard in fallbacks |
+| **`next-sitemap`** or manual `sitemap.xml` | SEO sitemap generation |
+| **`@next/bundle-analyzer`** | Production bundle analysis |
+| **`next/metadata`** API (built-in) | Open Graph + Twitter cards |
+
+### Remove
+| Library | Why |
+|---------|-----|
+| **@react-three/postprocessing** | Not installed, no FX needed for this scope |
+
+### Replace
+| Current | Replacement | Why |
+|---------|-------------|-----|
+| (none) | — | Stack is clean |
 
 ---
 
