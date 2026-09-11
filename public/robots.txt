@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://surya-astra.vercel.app/sitemap.xml

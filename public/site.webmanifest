@@ -1,0 +1,16 @@
+{
+  "name": "Surya-Astra",
+  "short_name": "Surya-Astra",
+  "description": "Solar Flare Intelligence Dashboard — Real-time solar flare prediction and space weather monitoring",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050510",
+  "theme_color": "#050510",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

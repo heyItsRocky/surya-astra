@@ -1,10 +1,50 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { NowcastWidget } from './NowcastWidget'
-import { ForecastWidget } from './ForecastWidget'
-import { EventsWidget } from './EventsWidget'
-import { MetricsGrid } from './MetricsGrid'
+import dynamic from 'next/dynamic'
+
+const NowcastWidget = dynamic(() => import('./NowcastWidget').then(mod => mod.NowcastWidget), {
+  loading: () => (
+    <div className="bg-glass p-6 rounded-xl border border-white/5 h-full flex flex-col justify-center items-center min-h-[300px]">
+      <div className="w-8 h-8 rounded-full border-2 border-solar-orange border-t-transparent animate-spin" />
+      <p className="text-gray-500 text-xs mt-3 font-display">Loading widget...</p>
+    </div>
+  ),
+  ssr: false,
+})
+
+const ForecastWidget = dynamic(() => import('./ForecastWidget').then(mod => mod.ForecastWidget), {
+  loading: () => (
+    <div className="bg-glass p-6 rounded-xl border border-white/5 h-full flex flex-col justify-center items-center min-h-[300px]">
+      <div className="w-8 h-8 rounded-full border-2 border-plasma border-t-transparent animate-spin" />
+      <p className="text-gray-500 text-xs mt-3 font-display">Loading widget...</p>
+    </div>
+  ),
+  ssr: false,
+})
+
+const EventsWidget = dynamic(() => import('./EventsWidget').then(mod => mod.EventsWidget), {
+  loading: () => (
+    <div className="bg-glass p-6 rounded-xl border border-white/5 h-full flex flex-col justify-center items-center min-h-[300px]">
+      <div className="w-8 h-8 rounded-full border-2 border-alert-red border-t-transparent animate-spin" />
+      <p className="text-gray-500 text-xs mt-3 font-display">Loading widget...</p>
+    </div>
+  ),
+  ssr: false,
+})
+
+const MetricsGrid = dynamic(() => import('./MetricsGrid').then(mod => mod.MetricsGrid), {
+  loading: () => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 w-full">
+      {[1, 2, 3, 4].map(i => (
+        <div key={i} className="bg-glass p-4 rounded-xl border border-white/5 h-32 flex items-center justify-center">
+          <div className="w-6 h-6 rounded-full border-2 border-gray-500 border-t-transparent animate-spin" />
+        </div>
+      ))}
+    </div>
+  ),
+  ssr: false,
+})
 
 export function DashboardSection() {
   return (
