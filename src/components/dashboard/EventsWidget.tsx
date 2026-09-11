@@ -7,7 +7,8 @@ export function EventsWidget() {
   const { data: response, isLoading } = useQuery({
     queryKey: ['alerts'],
     queryFn: api.getAlerts,
-    refetchInterval: 10000,
+    staleTime: 60_000,
+    refetchInterval: 60_000,
   })
 
   const alerts = response?.data || []

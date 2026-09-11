@@ -5,7 +5,7 @@ import type { NowcastData, ForecastData, SpaceWeatherAlert, Mission, TeamMember,
 const USE_MOCK = process.env.NEXT_PUBLIC_USE_MOCK === 'true'
 
 // Helper to simulate network latency
-const withLatency = async <T>(data: T, ms = 800): Promise<ApiResponse<T>> => {
+const withLatency = async <T>(data: T, ms = 80): Promise<ApiResponse<T>> => {
   await sleep(ms)
   return {
     success: true,

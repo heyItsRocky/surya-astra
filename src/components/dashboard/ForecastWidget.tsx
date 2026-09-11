@@ -7,7 +7,8 @@ import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, Tooltip } from 
 export function ForecastWidget() {
   const { data: response, isLoading } = useQuery({
     queryKey: ['forecast'],
-    queryFn: api.getForecast
+    queryFn: api.getForecast,
+    staleTime: 60_000,
   })
 
   const data = response?.data

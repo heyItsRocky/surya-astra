@@ -9,7 +9,8 @@ export function NowcastWidget() {
   const { data: response, isLoading } = useQuery({
     queryKey: ['nowcast'],
     queryFn: api.getNowcast,
-    refetchInterval: 5000, // Refresh every 5s for demo
+    staleTime: 30_000,    // Don't refetch for 30s
+    refetchInterval: 30_000,
   })
 
   const data = response?.data
