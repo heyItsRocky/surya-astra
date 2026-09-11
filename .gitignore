@@ -35,3 +35,8 @@ next-env.d.ts
 # IDE
 .vscode/
 .idea/
+
+# Python
+backend/.venv/
+backend/__pycache__/
+*.pyc
