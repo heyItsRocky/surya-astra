@@ -1,5 +1,10 @@
 # Surya-Astra — New Session Handover Prompt
 
+> **SUPERSEDED (2026-09-23):** This handover describes the pre-backend state.
+> Current status: backend live, tests/CI/docs/presentation pack in repo.
+> See `README.md` (quickstart), `docs/DEPLOY.md` (deploy), `changes.md` (session log),
+> and `COMPLETION_GUIDE.md` (DoD checkboxes). Retained for historical context only.
+
 > Copy this entire file as your first message in a new opencode session.
 
 ---

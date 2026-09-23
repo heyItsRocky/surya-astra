@@ -1,8 +1,8 @@
 # SURYA-ASTRA — Completion Guide
 
 **Project**: Solar Flare Intelligence Dashboard — ISRO BAH 2026 (PS15)
-**Status**: 60% built | Needs: error handling, tests, SEO, deployment
-**Stack**: Next.js 16, React 19, Three.js/R3F, Tailwind v4, Recharts v2, Anime.js
+**Status**: Submission-ready (lint/tsc/build green; tests + CI + docs + presentation pack in repo) | Deploy accounts still blocked
+**Stack**: Next.js 16, React 19, Three.js/R3F, Tailwind v4, Recharts v2, Anime.js, FastAPI backend
 
 ---
 
@@ -58,23 +58,24 @@
 ## What's Missing
 
 ### Priority 1 — Critical (blocks deployment)
-- [ ] **Error Boundaries** — Wrap 3D + dashboard in `<ErrorBoundary>` fallbacks
-- [ ] **API Error States** — Dashboard widgets show spinner forever on failure
-- [ ] **SEO** — Open Graph, Twitter cards, sitemap.xml, robots.txt
-- [ ] **Favicon + public/** — No icons, no PWA manifest
-- [ ] **.env.example** — Document `NEXT_PUBLIC_USE_MOCK`
+- [x] **Error Boundaries** — Wrap 3D + dashboard in `<ErrorBoundary>` fallbacks
+- [x] **API Error States** — All 4 widgets: loading / error / retry
+- [x] **SEO** — Open Graph, Twitter cards, sitemap.xml, robots.txt
+- [x] **Favicon + public/** — favicon.ico/svg, og-image, robots, sitemap
+- [x] **.env.example** — Document `NEXT_PUBLIC_USE_MOCK` + `NEXT_PUBLIC_API_URL`
 
 ### Priority 2 — Quality
-- [ ] **Tests** — Zero test files (vitest + @testing-library/react)
-- [ ] **Mobile nav** — Section dots hidden on mobile, no hamburger
-- [ ] **Lazy loading** — Dashboard widgets load eagerly
-- [ ] **Responsive pass** — Test 1440/1024/768/375px
-- [ ] **Accessibility** — ARIA labels, keyboard navigation
+- [x] **Tests** — Vitest (29) + pytest nowcaster (22)
+- [x] **Mobile nav** — MobileNav hamburger <768px
+- [x] **Lazy loading** — 3D + dashboard via `next/dynamic`
+- [ ] **Responsive pass** — Test 1440/1024/768/375px (manual QA)
+- [ ] **Accessibility** — ARIA labels, keyboard navigation (partial)
 
 ### Priority 3 — Production
-- [ ] **CI/CD** — GitHub Actions (lint, typecheck, test, build)
-- [ ] **Vercel config** — vercel.json
-- [ ] **Bundle analyzer** — @next/bundle-analyzer
+- [x] **CI/CD** — GitHub Actions (lint, typecheck, test, build, pytest)
+- [x] **Vercel config** — vercel.json rewrite → Railway
+- [ ] **Bundle analyzer** — @next/bundle-analyzer (optional)
+- [ ] **Live deploy** — needs Vercel/Railway logins → `docs/DEPLOY.md`
 
 ---
 

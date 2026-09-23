@@ -8,6 +8,8 @@
 
 ## Phase 1: Commit Existing Work (5 min)
 
+**Status:** ✅ Done (commit `13ccf69` + later commits).
+
 **What:** Commit the 8 modified files that are sitting uncommitted.
 
 ```

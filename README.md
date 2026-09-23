@@ -1,17 +1,11 @@
 # ☀️ Surya-Astra
 
-**Solar Flare Intelligence for the Next Generation**  
-*A submission for Bharatiya Antriksh Hackathon 2026 — Problem Statement 15*
+**Solar Flare Intelligence Dashboard**  
+*ISRO Bharatiya Antriksh Hackathon 2026 — Problem Statement 15*
 
-> **"Forecasting and/or Nowcasting of Solar Flares using combined Soft and Hard X-ray data from Aditya-L1"**
+> Forecasting and/or Nowcasting of Solar Flares using combined Soft and Hard X-ray data from Aditya-L1
 
----
-
-## 🚀 Overview
-
-Surya-Astra is a stunning single-page web application that visualizes real-time solar flare intelligence using data from ISRO's Aditya-L1 mission. It combines a **3D interactive Sun** with scroll-driven narrative storytelling (inspired by [animejs.com](https://animejs.com)), a **live mission control dashboard**, and a hybrid flare forecasting pipeline.
-
-Built for the **Bharatiya Antriksh Hackathon 2026**, this prototype demonstrates a complete nowcast/forecast system using mock SoLEXS + HEL1OS data, with a production-ready frontend architecture.
+[![CI](https://github.com/heyItsRocky/surya-astra/actions/workflows/ci.yml/badge.svg)](https://github.com/heyItsRocky/surya-astra/actions/workflows/ci.yml)
 
 ---
 
@@ -19,12 +13,12 @@ Built for the **Bharatiya Antriksh Hackathon 2026**, this prototype demonstrates
 
 | Feature | Description |
 |---|---|
-| **3D Interactive Sun** | R3F-powered sphere with boiling surface, particle corona, and scroll-driven disintegration |
-| **Scroll Narrative** | 6-section single-page experience with smooth scrolling (Lenis) and section navigation dots |
-| **Anime.js Animations** | Cinematic entrance animations, stagger effects, and counter transitions |
-| **Live Dashboard** | Mock nowcast flux chart, forecast probability rings, and events timeline |
-| **Hybrid Model Pipeline** | Visual pipeline showing Threshold Nowcast + XGBoost Forecast flow |
-| **10-Slide PPT** | Ready-to-submit idea presentation for ISRO BAH 2026 |
+| **3D Interactive Sun** | R3F sphere with GLSL shaders, particle corona, scroll-driven disintegration |
+| **Scroll Narrative** | 6-section SPA, Lenis smooth scroll, section dots + mobile hamburger nav |
+| **Live Dashboard** | Nowcast flux chart, forecast probabilities, alerts, metrics — all with loading/error/retry |
+| **Threshold Nowcaster (backend)** | Python FastAPI: A/B/C/M/X classification, CME risk, 24h forecast probabilities |
+| **Mock ↔ Real API toggle** | `NEXT_PUBLIC_USE_MOCK` switches offline demo vs live backend |
+| **Error boundaries** | 3D scene and dashboard fail soft with fallbacks |
 
 ---
 
@@ -32,138 +26,172 @@ Built for the **Bharatiya Antriksh Hackathon 2026**, this prototype demonstrates
 
 | Layer | Technology |
 |---|---|
-| **Framework** | Next.js 16 (App Router) + TypeScript |
-| **Styling** | Tailwind CSS v4 + dark theme |
-| **3D Graphics** | React Three Fiber + drei + postprocessing |
-| **Animation** | Anime.js v4 + Lenis (smooth scroll) + Framer Motion |
-| **Charts** | Recharts |
-| **UI Library** | shadcn/ui (Base UI primitives) |
-| **State** | TanStack React Query v5 |
-| **Data** | Mock data (no backend required) |
+| **Frontend** | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4 |
+| **3D** | React Three Fiber, drei, custom GLSL, postprocessing |
+| **Charts / State** | Recharts, TanStack React Query v5 |
+| **Animation** | Anime.js v4, Lenis, Framer Motion |
+| **Backend** | Python 3, FastAPI, Pydantic, threshold nowcaster (no ML runtime required) |
+| **Tests** | Vitest + Testing Library (frontend), pytest (backend) |
+| **CI** | GitHub Actions — lint, typecheck, test, build |
 
 ---
 
-## 📂 Project Structure
+## 🚀 Quickstart
+
+### Prerequisites
+
+- Node.js 20+ (22 recommended) and npm
+- Python 3.11+ (for backend)
+
+### 1. Frontend — mock mode (offline demo)
+
+```bash
+git clone https://github.com/heyItsRocky/surya-astra.git
+cd surya-astra
+npm ci
+
+cp .env.example .env.local
+# Ensure:
+#   NEXT_PUBLIC_USE_MOCK=true
+
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### 2. Backend — real API
+
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+
+uvicorn main:app --host 127.0.0.1 --port 8000
+```
+
+Health check:
+
+```bash
+curl http://127.0.0.1:8000/api/health
+```
+
+Endpoints (all return `{ success, data, timestamp, error }`):
+
+| Method | Path | Description |
+|---|---|---|
+| GET | `/api/health` | Service health |
+| GET | `/api/nowcast` | Flux history, class, CME risk, active regions |
+| GET | `/api/forecast` | 24h C/M/X probabilities, trend, confidence |
+| GET | `/api/alerts` | Space weather alerts |
+| GET | `/api/mission` | Aditya-L1 mission info |
+| GET | `/api/team` | Team members |
+
+Interactive docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+### 3. Frontend — real backend mode
+
+In `.env.local`:
+
+```bash
+NEXT_PUBLIC_USE_MOCK=false
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
+```
+
+Restart `npm run dev`. Dashboard widgets now call the FastAPI service directly (CORS allows `localhost:3000`).
+
+> **Note:** The Vercel rewrite in `vercel.json` (`/api/:path*` → Railway) is **production-only**. Local development uses `NEXT_PUBLIC_API_URL` directly.
+
+---
+
+## 🧪 Tests & quality gates
+
+```bash
+npm run lint        # ESLint (flat config, next/core-web-vitals)
+npx tsc --noEmit    # TypeScript
+npm test            # Vitest unit tests (frontend)
+npm run build       # Production build
+
+# Backend
+cd backend && python -m pytest tests -q
+```
+
+CI runs all of the above on push/PR to `main` (see `.github/workflows/ci.yml`).
+
+---
+
+## 📂 Project structure
 
 ```
 surya-astra/
 ├── src/
-│   ├── app/
-│   │   ├── layout.tsx          # Root layout with Lenis + providers
-│   │   ├── page.tsx            # Main single-page (6 sections)
-│   │   └── globals.css         # Tailwind v4 + dark theme
+│   ├── app/                 # App Router layout + page
 │   ├── components/
-│   │   ├── three/              # 3D Sun components (R3F)
-│   │   │   ├── sun-canvas.tsx
-│   │   │   ├── sun-mesh.tsx
-│   │   │   ├── sun-particles.tsx
-│   │   │   ├── scroll-manager.tsx
-│   │   │   └── effects.tsx
-│   │   ├── sections/           # Page sections
-│   │   │   ├── hero-section.tsx
-│   │   │   ├── problem-section.tsx
-│   │   │   ├── mission-section.tsx
-│   │   │   ├── solution-section.tsx
-│   │   │   ├── dashboard-section.tsx
-│   │   │   └── team-section.tsx
-│   │   ├── dashboard/          # Dashboard widgets
-│   │   │   ├── nowcast-panel.tsx
-│   │   │   ├── forecast-panel.tsx
-│   │   │   ├── events-timeline.tsx
-│   │   │   └── metrics-grid.tsx
-│   │   ├── navigation/         # Nav components
-│   │   ├── ui/                 # shadcn/ui components
-│   │   └── providers.tsx
-│   ├── hooks/
-│   │   ├── use-scroll-section.ts
-│   │   └── use-count-up.ts
-│   └── lib/
-│       ├── api.ts              # Mock API functions
-│       ├── mock-data.ts        # Data generators
-│       ├── types.ts            # TypeScript interfaces
-│       └── utils.ts            # cn() helper
-├── presentation/               # PPT materials
-│   ├── screenshots/
-│   ├── architecture.svg
-│   └── wireframes.png
-└── public/
+│   │   ├── dashboard/       # 4 widgets (loading/error/retry)
+│   │   ├── sections/        # Hero, Problem, Mission, Solution, Team
+│   │   ├── three/           # 3D Sun (R3F + GLSL)
+│   │   ├── navigation/      # TopNav, SectionDots, MobileNav
+│   │   └── ui/              # ErrorBoundary
+│   ├── hooks/               # useCountUp, useScrollSection
+│   └── lib/                 # api (mock/real), types, mock-data, utils
+├── backend/                 # FastAPI + threshold nowcaster
+│   ├── main.py
+│   ├── nowcaster.py
+│   ├── data_fetcher.py      # seed JSON + optional NOAA SWPC
+│   ├── seed_data.json
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── tests/
+├── presentation/            # Deck notes, architecture, screenshots
+├── docs/DEPLOY.md           # Vercel + Railway runbook
+├── public/                  # favicon, robots, sitemap, OG
+└── .github/workflows/ci.yml
 ```
 
 ---
 
-## 🛠️ Getting Started
+## 🌐 Environment variables
 
-### Prerequisites
-- Node.js 18+
-- npm or bun
+| Variable | Default | Purpose |
+|---|---|---|
+| `NEXT_PUBLIC_USE_MOCK` | `true` (via `.env.example`) | `true` = offline mock data; `false` = call real API |
+| `NEXT_PUBLIC_API_URL` | `http://localhost:8000` | Backend base URL when not using mock |
 
-### Installation
-
-```bash
-# Clone the repo
-git clone https://github.com/heyItsRocky/surya-astra.git
-cd surya-astra
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
+Copy `.env.example` → `.env.local`. Never commit `.env.local` (gitignored).
 
 ---
 
-## 🧭 User Experience
+## 🚢 Deployment (zero budget)
 
-The app is a **scroll-driven narrative** with 6 sections:
+See **[docs/DEPLOY.md](docs/DEPLOY.md)** for step-by-step Vercel + Railway instructions.
 
-1. **Hero** — 3D Sun with auto-rotation and particle corona
-2. **The Problem** — Flare impact statistics with animated counters
-3. **The Mission** — Aditya-L1 instrument overview with orbital diagram
-4. **The Solution** — Hybrid model pipeline visualization
-5. **Live Dashboard** — Mock nowcast/forecast/events panels
-6. **Team** — Creator profiles and back-to-top
+Summary:
 
-Navigation dots on the right side allow section jumping. The 3D Sun disintegrates into particles as you scroll through the problem section — a signature visual effect.
-
----
-
-## 🎯 Problem Statement
-
-[**Problem Statement 15**](https://bharatiya-antriksh-hackathon.in) — Forecasting and/or Nowcasting of Solar Flares using combined Soft and Hard X-ray data from Aditya-L1:
-
-> Solar flares are sudden, intense bursts of radiation originating from the release of magnetic energy in the solar atmosphere. These events can trigger severe space weather disruptions, impacting Earth-bound satellite communications, GPS navigation, and power grids.
-
-ISRO's **Aditya-L1** monitors the Sun from Lagrange Point L1 using:
-- **SoLEXS** — Solar Low Energy X-ray Spectrometer (soft X-rays, 2–22 keV)
-- **HEL1OS** — High Energy L1 Orbiting X-ray Spectrometer (hard X-rays, 10–150 keV)
+1. **Backend → Railway (or Render):** root directory `backend`, start command  
+   `uvicorn main:app --host 0.0.0.0 --port $PORT`, health path `/api/health`
+2. **Frontend → Vercel:** framework Next.js, env  
+   `NEXT_PUBLIC_USE_MOCK=false`, `NEXT_PUBLIC_API_URL=https://<railway-url>`
+3. `vercel.json` rewrites `/api/:path*` → Railway (update destination URL if renamed)
 
 ---
 
 ## 📊 Approach
 
-**Hybrid Model: Threshold Nowcasting + XGBoost Forecasting**
+**Hybrid: Threshold nowcasting (implemented) + path for ML forecasting**
 
 | Stage | Method | Input | Output |
 |---|---|---|---|
-| Nowcast | Threshold + HOPE detection | SoLEXS/HEL1OS flux | Flare alert (Y/N) |
-| Forecast | XGBoost classifier | Temperature, EM, Hardness Ratio, QPP | Class probability (C/M/X) |
+| Nowcast | Threshold + trend heuristics (`backend/nowcaster.py`) | X-ray flux series | Class, CME risk, alerts |
+| Forecast | Statistical baseline over recent flux | Last N readings | P(C), P(M), P(X), confidence |
+
+Seed data simulates 7 days of SoLEXS/HEL1OS-like flux; `?use_real_data=true` can pull NOAA SWPC X-ray summaries as a stand-in live feed.
 
 ---
 
-## 👥 Team
+## 📁 Presentation
 
-- **Rakshith** — Builder, ML Engineer, Frontend Developer
-- **Ghost AI** — Co-pilot, Architecture & Code Generation
+- [PRESENTATION_SCRIPT.md](PRESENTATION_SCRIPT.md) — 10-slide talk track
+- [presentation/](presentation/) — architecture notes, deck outline, screenshots
 
 ---
 

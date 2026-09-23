@@ -7,6 +7,21 @@
 
 ## [Unreleased]
 
+### Session 2026-09-23 — Submission-ready hardening
+- Migrated to ESLint 9 flat config (`eslint.config.mjs`); removed `.eslintrc.json`
+- Fixed lint/purity issues: seeded PRNG in `sun-particles.tsx`, throttled scroll state in `sun-scene.tsx`, apostrophes in sections
+- Rewrote `MetricsGrid` with React Query, skeleton, error + retry (4th widget complete)
+- Added `public/favicon.ico`
+- Added Vitest + Testing Library: 29 frontend tests (utils, mock shapes, useCountUp)
+- Added `backend/tests/test_nowcaster.py`: 22 pytest cases (classify, CME risk, forecast, trend, confidence)
+- Added `.github/workflows/ci.yml` (lint, tsc, test, build, pytest)
+- Scripts: `lint`, `typecheck`, `test`, `test:watch`, `test:backend`
+- Rewrote `README.md` (mock + real API quickstart); added `docs/DEPLOY.md`
+- Added `presentation/` (deck outline, architecture.svg, screenshot slot)
+- Updated `COMPLETION_GUIDE.md` checkboxes; superseded `HANDOVER_PROMPT.md`
+- Backend verified: all 6 endpoints HTTP 200 with `{success,data}` envelope
+- BLOCKED: Vercel/Railway account login for live deploy
+
 ### Phase 0 — Foundation
 - [ ] Initialize Next.js 16 project with TypeScript + Tailwind v4
 - [ ] Install all dependencies (R3F, drei, postprocessing, animejs, lenis, recharts, tanstack-query, shadcn/ui)

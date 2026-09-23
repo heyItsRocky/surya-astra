@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" font-family="Segoe UI, Inter, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050510"/>
+      <stop offset="100%" stop-color="#0a0a1a"/>
+    </linearGradient>
+    <linearGradient id="layer1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF6B35" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FF6B35" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="layer2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="layer3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00FF88" stop-opacity="0.06"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#FFD700"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg)"/>
+  <text x="60" y="56" fill="#FFD700" font-size="32" font-weight="700">SURYA-ASTRA — Architecture</text>
+  <text x="60" y="88" fill="#9CA3AF" font-size="16">Data → Logic → Presentation · Threshold nowcaster MVP</text>
+
+  <!-- Data layer -->
+  <rect x="60" y="130" width="1080" height="160" rx="16" fill="url(#layer3)" stroke="#00FF88" stroke-opacity="0.4"/>
+  <text x="90" y="170" fill="#00FF88" font-size="14" font-weight="700" letter-spacing="2">DATA LAYER</text>
+  <rect x="90" y="195" width="300" height="70" rx="10" fill="#050510" fill-opacity="0.6" stroke="#1F2937"/>
+  <text x="240" y="225" fill="#fff" font-size="15" text-anchor="middle">seed_data.json</text>
+  <text x="240" y="248" fill="#9CA3AF" font-size="12" text-anchor="middle">7-day synthetic flux (A–X)</text>
+
+  <rect x="420" y="195" width="300" height="70" rx="10" fill="#050510" fill-opacity="0.6" stroke="#1F2937"/>
+  <text x="570" y="225" fill="#fff" font-size="15" text-anchor="middle">NOAA SWPC (optional)</text>
+  <text x="570" y="248" fill="#9CA3AF" font-size="12" text-anchor="middle">Live X-ray flux JSON</text>
+
+  <rect x="750" y="195" width="360" height="70" rx="10" fill="#050510" fill-opacity="0.6" stroke="#1F2937"/>
+  <text x="930" y="225" fill="#fff" font-size="15" text-anchor="middle">Aditya-L1 SoLEXS + HEL1OS</text>
+  <text x="930" y="248" fill="#9CA3AF" font-size="12" text-anchor="middle">Target production data plane</text>
+
+  <!-- arrows down -->
+  <line x1="300" y1="300" x2="300" y2="340" stroke="#FFD700" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="300" x2="600" y2="340" stroke="#FFD700" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="900" y1="300" x2="900" y2="340" stroke="#FFD700" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Logic layer -->
+  <rect x="60" y="350" width="1080" height="170" rx="16" fill="url(#layer2)" stroke="#8B5CF6" stroke-opacity="0.45"/>
+  <text x="90" y="390" fill="#A78BFA" font-size="14" font-weight="700" letter-spacing="2">LOGIC LAYER — FastAPI (backend/)</text>
+
+  <rect x="90" y="415" width="240" height="80" rx="10" fill="#050510" fill-opacity="0.65" stroke="#1F2937"/>
+  <text x="210" y="448" fill="#fff" font-size="14" text-anchor="middle">classify_flux</text>
+  <text x="210" y="470" fill="#9CA3AF" font-size="12" text-anchor="middle">A / B / C / M / X</text>
+
+  <rect x="360" y="415" width="240" height="80" rx="10" fill="#050510" fill-opacity="0.65" stroke="#1F2937"/>
+  <text x="480" y="448" fill="#fff" font-size="14" text-anchor="middle">CME risk + trend</text>
+  <text x="480" y="470" fill="#9CA3AF" font-size="12" text-anchor="middle">Spike heuristic 0–1</text>
+
+  <rect x="630" y="415" width="240" height="80" rx="10" fill="#050510" fill-opacity="0.65" stroke="#1F2937"/>
+  <text x="750" y="448" fill="#fff" font-size="14" text-anchor="middle">Forecast probs</text>
+  <text x="750" y="470" fill="#9CA3AF" font-size="12" text-anchor="middle">P(C), P(M), P(X)</text>
+
+  <rect x="900" y="415" width="210" height="80" rx="10" fill="#050510" fill-opacity="0.65" stroke="#1F2937"/>
+  <text x="1005" y="448" fill="#fff" font-size="14" text-anchor="middle">REST JSON</text>
+  <text x="1005" y="470" fill="#9CA3AF" font-size="12" text-anchor="middle">{success, data}</text>
+
+  <!-- arrows -->
+  <line x1="600" y1="530" x2="600" y2="570" stroke="#FFD700" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="620" y="558" fill="#FFD700" font-size="12">/api/*</text>
+
+  <!-- Presentation layer -->
+  <rect x="60" y="580" width="1080" height="110" rx="16" fill="url(#layer1)" stroke="#FF6B35" stroke-opacity="0.5"/>
+  <text x="90" y="618" fill="#FF6B35" font-size="14" font-weight="700" letter-spacing="2">PRESENTATION LAYER — Next.js 16</text>
+  <text x="90" y="655" fill="#E5E7EB" font-size="15">R3F 3D Sun · 6-section scroll SPA · Recharts widgets · ErrorBoundary · React Query</text>
+  <text x="90" y="678" fill="#9CA3AF" font-size="13">lib/api.ts  ⇄  NEXT_PUBLIC_USE_MOCK  ⇄  NEXT_PUBLIC_API_URL</text>
+</svg>
