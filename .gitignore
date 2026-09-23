@@ -40,3 +40,9 @@ next-env.d.ts
 backend/.venv/
 backend/__pycache__/
 *.pyc
+.pytest_cache/
+
+# local scratch
+.tmp/
+backend-uvicorn.log
+*.log

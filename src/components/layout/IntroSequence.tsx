@@ -59,7 +59,7 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
     >
       <div className="max-w-md w-full font-display text-center">
         <div className="intro-text text-solar-orange text-sm tracking-widest uppercase mb-4">
-          ISRO Bharatiya Antriksh Hackathon '26
+          ISRO Bharatiya Antriksh Hackathon &apos;26
         </div>
         <div className="intro-text text-3xl md:text-4xl text-white font-bold mb-8 tracking-wider">
           INITIALIZING<br/>SURYA-ASTRA

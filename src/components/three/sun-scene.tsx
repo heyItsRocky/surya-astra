@@ -1,24 +1,24 @@
 'use client'
 
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Environment } from '@react-three/drei'
-import { Suspense, useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { Suspense, useState } from 'react'
 import { SunMesh } from './sun-mesh'
 import { SunParticles } from './sun-particles'
 import { Effects } from './effects'
 
-/** Tracks scroll progress on the main thread and exposes it to 3D via a uniform-like pattern */
+/** Tracks scroll progress on the R3F frame loop and exposes it as state (throttled). */
 function ScrollTracker({ children }: { children: (scroll: number) => React.ReactNode }) {
-  const scrollRef = useRef(0)
+  const [scroll, setScroll] = useState(0)
 
   useFrame(() => {
     if (typeof window === 'undefined') return
     const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight)
-    scrollRef.current = Math.min(1, Math.max(0, window.scrollY / maxScroll))
+    const next = Math.min(1, Math.max(0, window.scrollY / maxScroll))
+    setScroll(prev => (Math.abs(prev - next) > 0.002 ? next : prev))
   })
 
-  return <>{children(scrollRef.current)}</>
+  return <>{children(scroll)}</>
 }
 
 export function SunScene() {
@@ -35,7 +35,7 @@ export function SunScene() {
 
         <Suspense fallback={null}>
           <ScrollTracker>
-            {(scrollProgress) => (
+            {scrollProgress => (
               <>
                 <SunMesh scrollProgress={scrollProgress} />
                 <SunParticles scrollProgress={scrollProgress} />

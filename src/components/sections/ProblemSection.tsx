@@ -78,7 +78,7 @@ export function ProblemSection() {
             THE INVISIBLE <span className="text-alert-red drop-shadow-[0_0_15px_rgba(255,51,102,0.5)]">THREAT</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Solar flares and Coronal Mass Ejections (CMEs) pose an existential threat to modern civilization's technological backbone.
+            Solar flares and Coronal Mass Ejections (CMEs) pose an existential threat to modern civilization&apos;s technological backbone.
           </p>
         </motion.div>
 
