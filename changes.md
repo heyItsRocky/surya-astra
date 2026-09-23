@@ -56,7 +56,13 @@
 | Backend live smoke | `/api/health` + `/api/nowcast` HTTP 200, `success=true`, full envelope |
 | Endpoint loop | 6/6 HTTP 200 earlier in session |
 
-**Commits made:** planned 1–5 below (see git log after push).
+**Commits made this session (on top of `e91564d`):**
+1. `fix: eslint flat config for Next 16, MetricsGrid API states, purity lint fixes, favicon.ico`
+2. `test: add vitest frontend tests and pytest nowcaster tests`
+3. `ci: add GitHub Actions workflow for lint, typecheck, build, pytest`
+4. `docs: rewrite README, update guides, add deploy runbook and presentation pack`
+
+**E2E smoke:** mock-mode `npm start` → home/favicon/robots/sitemap 200; real-API mode → all 6 endpoints `{success,data}` + assets 200 (`REAL_SMOKE=PASS`).
 
 **Deploy:** still BLOCKED on account login → `docs/DEPLOY.md` only.
 
