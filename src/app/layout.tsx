@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import { inter, orbitron } from './fonts'
 import { Providers } from '@/components/layout/Providers'
 import { TopNav } from '@/components/navigation/TopNav'
 import { SectionDots } from '@/components/navigation/SectionDots'
@@ -78,18 +79,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${orbitron.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased font-body">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-solar-orange focus:text-space-900 focus:rounded focus:font-display focus:text-sm"
+        >
+          Skip to main content
+        </a>
         <Providers>
-          <div className="noise-overlay" />
+          <div className="noise-overlay" aria-hidden="true" />
           <TopNav />
           <SectionDots />
           <MobileNav />

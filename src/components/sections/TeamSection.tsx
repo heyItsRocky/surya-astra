@@ -21,7 +21,7 @@ export function TeamSection() {
         transition={{ duration: 0.8 }}
         className="text-center mb-16 max-w-3xl"
       >
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
           THE <span className="text-solar-gold drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">CREW</span>
         </h2>
         <p className="text-gray-400 text-lg">
@@ -56,9 +56,10 @@ export function TeamSection() {
         transition={{ duration: 1, delay: 0.8 }}
         className="mt-32 text-center"
       >
-        <button 
+        <button
+          type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="text-gray-500 hover:text-white transition-colors text-sm font-display tracking-widest uppercase flex flex-col items-center gap-2"
+          className="text-gray-500 hover:text-white transition-colors text-sm font-display tracking-widest uppercase flex flex-col items-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-solar-orange focus-visible:rounded"
         >
           <div className="w-[1px] h-12 bg-gradient-to-t from-gray-500 to-transparent" />
           RETURN TO APEX

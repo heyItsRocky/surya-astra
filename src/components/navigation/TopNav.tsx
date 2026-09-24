@@ -24,14 +24,19 @@ export function TopNav() {
         scrolled ? 'bg-space-900/80 backdrop-blur-md border-b border-white/5 py-3' : 'bg-transparent'
       )}
     >
-      <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="flex items-center gap-3 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-solar-orange focus-visible:rounded"
+        aria-label="Back to top — Surya-Astra home"
+      >
         <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-solar-orange to-solar-gold glow-orange flex items-center justify-center">
-          <span className="text-space-900 font-display font-bold text-sm">S</span>
+          <span className="text-space-900 font-display font-bold text-sm" aria-hidden="true">S</span>
         </div>
         <span className="font-display font-bold text-xl tracking-wider text-white">
           SURYA<span className="text-solar-orange">-ASTRA</span>
         </span>
-      </div>
+      </button>
 
       <div className="hidden md:flex items-center gap-6">
         <div className="flex items-center gap-2 text-xs font-display text-gray-400">

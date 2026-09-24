@@ -25,7 +25,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight drop-shadow-lg"
+          className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight drop-shadow-lg"
         >
           SURYA<span className="text-gradient-solar">-ASTRA</span>
         </motion.h1>
@@ -46,9 +46,10 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 1 }}
           className="animate-float"
         >
-          <button 
+          <button
+            type="button"
             onClick={() => document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 rounded-lg bg-gradient-to-r from-solar-orange to-solar-gold text-space-900 font-display font-bold hover:shadow-[0_0_30px_rgba(255,107,53,0.5)] transition-shadow"
+            className="px-6 sm:px-8 py-4 rounded-lg bg-gradient-to-r from-solar-orange to-solar-gold text-space-900 font-display font-bold hover:shadow-[0_0_30px_rgba(255,107,53,0.5)] transition-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solar-orange"
           >
             INITIALIZE DASHBOARD
           </button>

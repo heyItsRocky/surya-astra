@@ -19,7 +19,7 @@ export function SolutionSection() {
         transition={{ duration: 0.8 }}
         className="text-center mb-16 max-w-3xl"
       >
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
           THE <span className="text-plasma-light drop-shadow-[0_0_15px_rgba(167,139,250,0.5)]">PIPELINE</span>
         </h2>
         <p className="text-gray-400 text-lg">

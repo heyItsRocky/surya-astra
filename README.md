@@ -111,6 +111,7 @@ npm run lint        # ESLint (flat config, next/core-web-vitals)
 npx tsc --noEmit    # TypeScript
 npm test            # Vitest unit tests (frontend)
 npm run build       # Production build
+npm run analyze     # Bundle analyzer report (ANALYZE=true)
 
 # Backend
 cd backend && python -m pytest tests -q

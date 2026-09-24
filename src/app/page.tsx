@@ -16,7 +16,7 @@ export default function Home() {
   const [introComplete, setIntroComplete] = useState(false)
 
   return (
-    <main className="relative w-full">
+    <main id="main-content" className="relative w-full" tabIndex={-1}>
       <IntroSequence onComplete={() => setIntroComplete(true)} />
       
       {/* Fixed 3D Background */}

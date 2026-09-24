@@ -17,7 +17,7 @@ function MetricCard({ impact, index }: { impact: any, index: number }) {
       <div className={`absolute top-0 left-0 w-full h-1 opacity-50 transition-opacity group-hover:opacity-100 ${impact.color.replace('text-', 'bg-')}`} />
       
       <h3 className="font-display text-xl text-white mb-4">{impact.title}</h3>
-      <div className={`font-display text-5xl font-bold mb-2 ${impact.color}`}>
+      <div className={`font-display text-4xl sm:text-5xl font-bold mb-2 ${impact.color}`}>
         <span ref={ref}>
           {impact.isFloat ? count.toFixed(1) : Math.floor(count)}
         </span>

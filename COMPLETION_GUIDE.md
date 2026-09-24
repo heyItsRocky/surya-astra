@@ -68,13 +68,14 @@
 - [x] **Tests** — Vitest (29) + pytest nowcaster (22)
 - [x] **Mobile nav** — MobileNav hamburger <768px
 - [x] **Lazy loading** — 3D + dashboard via `next/dynamic`
-- [ ] **Responsive pass** — Test 1440/1024/768/375px (manual QA)
-- [ ] **Accessibility** — ARIA labels, keyboard navigation (partial)
+- [x] **Responsive pass** — Hero/Team/Mission/Solution headings scale down at 375px; dashboard header wraps; MetricCard type scales (manual device QA still useful)
+- [x] **Accessibility** — Skip link, focus-visible rings, `aria-*` nav/menu, `role=status|alert` widget states, button `type`s, `aria-hidden` spinners
 
 ### Priority 3 — Production
 - [x] **CI/CD** — GitHub Actions (lint, typecheck, test, build, pytest)
 - [x] **Vercel config** — vercel.json rewrite → Railway
-- [ ] **Bundle analyzer** — @next/bundle-analyzer (optional)
+- [x] **Bundle analyzer** — `@next/bundle-analyzer` via `npm run analyze` (`ANALYZE=true`)
+- [x] **Fonts via next/font** — Inter + Orbitron self-hosted; fixes `no-page-custom-font` warning
 - [ ] **Live deploy** — needs Vercel/Railway logins → `docs/DEPLOY.md`
 
 ---

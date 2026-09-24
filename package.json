@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "analyze": "ANALYZE=true next build",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:backend": "python3 -m pytest backend/tests -q"
@@ -30,6 +31,7 @@
     "three": "^0.175.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.3.6",
     "@tailwindcss/postcss": "^4.1.12",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",

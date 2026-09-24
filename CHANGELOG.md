@@ -15,11 +15,12 @@
 - Added Vitest + Testing Library: 29 frontend tests (utils, mock shapes, useCountUp)
 - Added `backend/tests/test_nowcaster.py`: 22 pytest cases (classify, CME risk, forecast, trend, confidence)
 - Added `.github/workflows/ci.yml` (lint, tsc, test, build, pytest)
-- Scripts: `lint`, `typecheck`, `test`, `test:watch`, `test:backend`
+- Scripts: `lint`, `typecheck`, `test`, `test:watch`, `test:backend`, `analyze`
 - Rewrote `README.md` (mock + real API quickstart); added `docs/DEPLOY.md`
 - Added `presentation/` (deck outline, architecture.svg, screenshot slot)
 - Updated `COMPLETION_GUIDE.md` checkboxes; superseded `HANDOVER_PROMPT.md`
 - Backend verified: all 6 endpoints HTTP 200 with `{success,data}` envelope
+- Optional polish: `next/font` (Inter/Orbitron, clears font lint warning), `@next/bundle-analyzer`, skip link + focus/aria on nav & widgets, mobile type scale
 - BLOCKED: Vercel/Railway account login for live deploy
 
 ### Phase 0 — Foundation

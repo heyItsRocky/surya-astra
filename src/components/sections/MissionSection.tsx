@@ -25,7 +25,7 @@ export function MissionSection() {
           <div className="inline-block px-3 py-1 rounded bg-plasma/20 border border-plasma/50 text-plasma-light text-xs font-display tracking-widest uppercase mb-4">
             Our Vantage Point
           </div>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
             ADITYA-<span className="text-solar-gold drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">L1</span>
           </h2>
           

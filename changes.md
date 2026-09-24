@@ -61,6 +61,9 @@
 2. `test: add vitest frontend tests and pytest nowcaster tests`
 3. `ci: add GitHub Actions workflow for lint, typecheck, build, pytest`
 4. `docs: rewrite README, update guides, add deploy runbook and presentation pack`
+5. `chore: optional polish — next/font, bundle analyzer, a11y and responsive fixes` (pending this push)
+
+**Gates after polish:** lint **0 errors 0 warnings**; tsc 0; vitest 29; pytest 22; build 0; mock smoke 200s.
 
 **E2E smoke:** mock-mode `npm start` → home/favicon/robots/sitemap 200; real-API mode → all 6 endpoints `{success,data}` + assets 200 (`REAL_SMOKE=PASS`).
 

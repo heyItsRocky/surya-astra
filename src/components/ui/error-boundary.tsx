@@ -39,8 +39,8 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       }
 
       return (
-        <div className="bg-glass p-6 rounded-xl border border-alert-red/20 h-full flex flex-col items-center justify-center text-center min-h-[200px]">
-          <div className="w-12 h-12 rounded-full bg-alert-red/10 flex items-center justify-center mb-4">
+        <div className="bg-glass p-6 rounded-xl border border-alert-red/20 h-full flex flex-col items-center justify-center text-center min-h-[200px]" role="alert">
+          <div className="w-12 h-12 rounded-full bg-alert-red/10 flex items-center justify-center mb-4" aria-hidden="true">
             <svg
               className="w-6 h-6 text-alert-red"
               fill="none"
@@ -60,8 +60,9 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             {this.state.error?.message || 'An unexpected error occurred.'}
           </p>
           <button
+            type="button"
             onClick={this.handleRetry}
-            className="px-4 py-2 bg-solar-orange/20 text-solar-orange rounded-lg text-sm font-display hover:bg-solar-orange/30 transition-colors"
+            className="px-4 py-2 bg-solar-orange/20 text-solar-orange rounded-lg text-sm font-display hover:bg-solar-orange/30 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-solar-orange"
           >
             Try Again
           </button>

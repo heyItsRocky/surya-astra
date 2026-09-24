@@ -15,8 +15,13 @@ export function ForecastWidget() {
 
   if (isLoading) {
     return (
-      <div className="bg-glass p-6 rounded-xl border border-white/5 h-full flex flex-col justify-center items-center min-h-[300px]">
-        <div className="w-8 h-8 rounded-full border-2 border-plasma border-t-transparent animate-spin" />
+      <div
+        className="bg-glass p-6 rounded-xl border border-white/5 h-full flex flex-col justify-center items-center min-h-[300px]"
+        role="status"
+        aria-live="polite"
+        aria-busy="true"
+      >
+        <div className="w-8 h-8 rounded-full border-2 border-plasma border-t-transparent animate-spin" aria-hidden="true" />
         <p className="text-gray-500 text-xs mt-3 font-display">Loading forecast...</p>
       </div>
     )
@@ -24,8 +29,8 @@ export function ForecastWidget() {
 
   if (isError || !data) {
     return (
-      <div className="bg-glass p-6 rounded-xl border border-alert-red/20 h-full flex flex-col justify-center items-center min-h-[300px]">
-        <div className="w-10 h-10 rounded-full bg-alert-red/10 flex items-center justify-center mb-3">
+      <div className="bg-glass p-6 rounded-xl border border-alert-red/20 h-full flex flex-col justify-center items-center min-h-[300px]" role="alert">
+        <div className="w-10 h-10 rounded-full bg-alert-red/10 flex items-center justify-center mb-3" aria-hidden="true">
           <svg className="w-5 h-5 text-alert-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
           </svg>
@@ -35,8 +40,9 @@ export function ForecastWidget() {
           {error?.message || 'Unable to fetch forecast data'}
         </p>
         <button
+          type="button"
           onClick={() => refetch()}
-          className="px-4 py-2 bg-plasma/20 text-plasma-light rounded-lg text-xs font-display hover:bg-plasma/30 transition-colors"
+          className="px-4 py-2 bg-plasma/20 text-plasma-light rounded-lg text-xs font-display hover:bg-plasma/30 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-plasma"
         >
           Retry
         </button>
@@ -69,7 +75,7 @@ export function ForecastWidget() {
         </div>
       </div>
 
-      <div className="flex-1 min-h-[250px] w-full relative">
+      <div className="flex-1 min-h-[250px] w-full relative" role="img" aria-label={`24 hour flare probability forecast. Trend ${data.trend}. Confidence ${((data.modelConfidence) * 100).toFixed(0)} percent.`}>
         <ResponsiveContainer width="100%" height="100%">
           <RadialBarChart 
             cx="50%" 

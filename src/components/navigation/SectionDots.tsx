@@ -7,15 +7,20 @@ export function SectionDots() {
   const { activeSection, scrollTo, sections } = useScrollSection()
 
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4">
+    <nav
+      aria-label="Section navigation"
+      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4"
+    >
       {sections.map(({ id, label }) => {
         const isActive = activeSection === id
         return (
           <button
             key={id}
+            type="button"
             onClick={() => scrollTo(id)}
-            className="group relative flex items-center justify-end"
+            className="group relative flex items-center justify-end focus-visible:outline focus-visible:outline-2 focus-visible:outline-solar-orange rounded"
             aria-label={`Scroll to ${label}`}
+            aria-current={isActive ? 'true' : undefined}
           >
             <span
               className={cn(
@@ -37,6 +42,6 @@ export function SectionDots() {
           </button>
         )
       })}
-    </div>
+    </nav>
   )
 }

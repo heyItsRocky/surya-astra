@@ -24,13 +24,18 @@ export function MetricsGrid() {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 w-full">
+      <div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 w-full"
+        role="status"
+        aria-live="polite"
+        aria-busy="true"
+      >
         {[1, 2, 3, 4].map(i => (
           <div
             key={i}
             className="bg-glass p-4 rounded-xl border border-white/5 h-32 flex flex-col items-center justify-center gap-3"
           >
-            <div className="w-6 h-6 rounded-full border-2 border-solar-orange border-t-transparent animate-spin" />
+            <div className="w-6 h-6 rounded-full border-2 border-solar-orange border-t-transparent animate-spin" aria-hidden="true" />
             <p className="text-gray-500 text-xs font-display">Loading metrics...</p>
           </div>
         ))}
@@ -41,14 +46,15 @@ export function MetricsGrid() {
   if (isError || !nowcast) {
     return (
       <div className="mt-6 w-full">
-        <div className="bg-glass p-6 rounded-xl border border-alert-red/20 flex flex-col items-center justify-center text-center min-h-[120px]">
+        <div className="bg-glass p-6 rounded-xl border border-alert-red/20 flex flex-col items-center justify-center text-center min-h-[120px]" role="alert">
           <p className="text-gray-400 text-sm mb-1 font-display">Metrics Unavailable</p>
           <p className="text-gray-500 text-xs mb-4 max-w-md">
             {error?.message || 'Unable to fetch telemetry metrics'}
           </p>
           <button
+            type="button"
             onClick={() => refetch()}
-            className="px-4 py-2 bg-solar-orange/20 text-solar-orange rounded-lg text-xs font-display hover:bg-solar-orange/30 transition-colors"
+            className="px-4 py-2 bg-solar-orange/20 text-solar-orange rounded-lg text-xs font-display hover:bg-solar-orange/30 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-solar-orange"
           >
             Retry
           </button>

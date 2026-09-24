@@ -28,9 +28,9 @@
   --color-corona: #FF8C42;
   --color-flare: #FF4444;
 
-  /* Fonts */
-  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Orbitron', ui-monospace, monospace;
+  /* Fonts — provided by next/font CSS variables (--font-inter / --font-orbitron) */
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-orbitron), ui-monospace, monospace;
 
   /* Animations */
   --animate-float: float 6s ease-in-out infinite;
