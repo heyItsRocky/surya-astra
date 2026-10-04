@@ -200,16 +200,20 @@ All routes are `'use client'` (App Router) with scroll-based navigation.
 │       ├── mock-data.ts
 │       ├── types.ts
 │       └── utils.ts
-├── presentation/                    ← PPT materials
-│   ├── screenshots/
-│   └── architecture-diagram.png
-└── documentation/                   ← Docs
+└── docs/                           ← Docs, plan & PPT materials
+    ├── DEPLOY.md
+    ├── ARCHITECTURE.md
     ├── plan.md
+    ├── PLAN_OPTION_A.md
     ├── user-experience.md
     ├── execution-strategy.md
-    ├── architecture.md
-    ├── presentation-script.md
-    ├── faq.md
-    ├── changelog.md
-    └── resources.md
+    ├── COMPLETION_GUIDE.md
+    ├── HANDOVER_PROMPT.md
+    ├── PRESENTATION_SCRIPT.md
+    ├── changes.md
+    ├── resources.md
+    └── presentation/
+        ├── deck-outline.md
+        ├── screenshots/
+        └── architecture.svg
 ```

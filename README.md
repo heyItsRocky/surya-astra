@@ -143,9 +143,9 @@ surya-astra/
 │   ├── requirements.txt
 │   ├── Dockerfile
 │   └── tests/
-├── presentation/            # Deck notes, architecture, screenshots
-├── docs/DEPLOY.md           # Vercel + Railway runbook
-├── public/                  # favicon, robots, sitemap, OG
+├── docs/              # Plan, architecture, deploy runbook, presentation pack
+│   └── presentation/  # Deck notes, architecture, screenshots
+├── public/            # favicon, robots, sitemap, OG
 └── .github/workflows/ci.yml
 ```
 
@@ -191,8 +191,8 @@ Seed data simulates 7 days of SoLEXS/HEL1OS-like flux; `?use_real_data=true` can
 
 ## 📁 Presentation
 
-- [PRESENTATION_SCRIPT.md](PRESENTATION_SCRIPT.md) — 10-slide talk track
-- [presentation/](presentation/) — architecture notes, deck outline, screenshots
+- [PRESENTATION_SCRIPT.md](docs/PRESENTATION_SCRIPT.md) — 10-slide talk track
+- [docs/presentation/](docs/presentation/) — architecture notes, deck outline, screenshots
 
 ---
 

@@ -41,13 +41,13 @@ SoLEXS/HEL1OS flux → Feature window → Threshold nowcaster
 - Nowcast flux chart  
 - Forecast rings  
 - Alerts + metrics  
-→ `presentation/screenshots/`
+→ `docs/presentation/screenshots/`
 
 ### Slide 7 — Architecture
 - **Presentation:** Next.js 16, R3F, Recharts, React Query  
 - **Logic:** `lib/api.ts` mock/real toggle, ErrorBoundary, widgets  
 - **Data:** FastAPI threshold nowcaster + seed/NOAA feed  
-→ `presentation/architecture.svg`
+→ `docs/presentation/architecture.svg`
 
 ### Slide 8 — Technologies
 Next.js 16 · React 19 · TypeScript · Tailwind v4 · R3F · Recharts · TanStack Query · FastAPI · Pydantic · Vercel/Railway free tier · GitHub Actions CI
